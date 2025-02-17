@@ -2,6 +2,8 @@ package matrix;
 
 import static org.junit.Assert.assertArrayEquals;
 
+import java.util.Arrays;
+
 import org.junit.jupiter.api.Test;
 
 public class SetMatrixZeroes {
