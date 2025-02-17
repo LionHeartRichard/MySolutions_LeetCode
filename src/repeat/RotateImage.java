@@ -1,4 +1,4 @@
-package matrix;
+package repeat;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -14,11 +14,12 @@ import org.junit.jupiter.api.Test;
 public class RotateImage {
 
 	public void rotate(int[][] matrix) {
+		if (matrix == null || matrix.length <= 1)
+			return;
 		int len = matrix.length;
 		swapRowsByColumns(matrix, len);
-		for (int rowIdx = 0; rowIdx < len; ++rowIdx) {
-			reverseRow(matrix, rowIdx, 0, len - 1);
-		}
+		for (int i = 0; i < len; ++i)
+			reverseRow(matrix, i, 0, len - 1);
 	}
 
 	private void swapRowsByColumns(int[][] matrix, int len) {
@@ -31,20 +32,20 @@ public class RotateImage {
 		}
 	}
 
-	private void reverseRow(int[][] matrix, final int rowIdx, int leftIdx, int rightIdx) {
+	private void reverseRow(int[][] matrix, final int i, int leftIdx, int rightIdx) {
 		while (leftIdx < rightIdx) {
-			int swap = matrix[rowIdx][leftIdx];
-			matrix[rowIdx][leftIdx++] = matrix[rowIdx][rightIdx];
-			matrix[rowIdx][rightIdx--] = swap;
+			int swap = matrix[i][leftIdx];
+			matrix[i][leftIdx++] = matrix[i][rightIdx];
+			matrix[i][rightIdx--] = swap;
 		}
 	}
 
 	@Test
 	public void case1() {
-		int[][] matrix = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+		int[][] matrix = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
 		// { 7, 8, 9 }{ 4, 5, 6 }{ 1, 2, 3 }
 		int len = matrix.length;
-		int[][] expected = { { 7, 4, 1 }, { 8, 5, 2 }, { 9, 6, 3 } };
+		int[][] expected = {{7, 4, 1}, {8, 5, 2}, {9, 6, 3}};
 		rotate(matrix);
 
 		for (int rowIdx = 0; rowIdx < len; ++rowIdx) {
@@ -56,9 +57,9 @@ public class RotateImage {
 
 	@Test
 	public void case2() {
-		int[][] matrix = { { 5, 1, 9, 11 }, { 2, 4, 8, 10 }, { 13, 3, 6, 7 }, { 15, 14, 12, 16 } };
+		int[][] matrix = {{5, 1, 9, 11}, {2, 4, 8, 10}, {13, 3, 6, 7}, {15, 14, 12, 16}};
 		int len = matrix.length;
-		int[][] expected = { { 15, 13, 2, 5 }, { 14, 3, 4, 1 }, { 12, 6, 8, 9 }, { 16, 7, 10, 11 } };
+		int[][] expected = {{15, 13, 2, 5}, {14, 3, 4, 1}, {12, 6, 8, 9}, {16, 7, 10, 11}};
 		rotate(matrix);
 
 		for (int rowIdx = 0; rowIdx < len; ++rowIdx) {

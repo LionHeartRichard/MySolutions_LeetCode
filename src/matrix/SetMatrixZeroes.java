@@ -2,9 +2,12 @@ package matrix;
 
 import static org.junit.Assert.assertArrayEquals;
 
-import java.util.Arrays;
-
 import org.junit.jupiter.api.Test;
+
+/*
+ * Дана целочисленная матрица m x n, если элемент равен 0, установите всю ее строку и столбец в 0. 
+ * Вы должны сделать это на месте.
+ */
 
 public class SetMatrixZeroes {
 
