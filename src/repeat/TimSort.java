@@ -1,4 +1,4 @@
-package base;
+package repeat;
 
 import static org.junit.Assert.assertArrayEquals;
 
@@ -27,33 +27,19 @@ public class TimSort {
 		}
 	}
 
-	private void insertionSort(int[] arr, int i, int len) {
-		int swap, slow, fast;
-		for (slow = i + 1; slow < len; ++slow) {
-			swap = arr[slow];
-			fast = slow - 1;
-			while (fast >= 0 && arr[fast] > swap)
-				arr[fast + 1] = arr[fast--];
-			arr[++fast] = swap;
-		}
-	}
-
 	private void merge(int[] arr, int begin, int mid, int n) {
 		int i, j, idx;
-
 		int lenLeft = mid - begin + 1;
 		int lenRight = n - mid;
 
 		int[] arrLeft = new int[lenLeft];
 		int[] arrRight = new int[lenRight];
-		for (i = 0; i < lenLeft; ++i) {
+		for (i = 0; i < lenLeft; ++i)
 			arrLeft[i] = arr[begin + i];
-		}
-		for (j = 0; j < lenRight; ++j) {
+		for (j = 0; j < lenRight; ++j)
 			arrRight[j] = arr[mid + j + 1];
-		}
 
-		idx = begin;
+		idx = 0;
 		i = 0;
 		j = 0;
 		while (i < lenLeft && j < lenRight) {
@@ -67,6 +53,18 @@ public class TimSort {
 			arr[idx++] = arrLeft[i++];
 		while (j < lenRight)
 			arr[idx++] = arrRight[j++];
+
+	}
+
+	private void insertionSort(int[] arr, int i, int len) {
+		int swap, slow, fast;
+		for (slow = i + 1; slow < len; ++slow) {
+			swap = arr[slow];
+			fast = slow - 1;
+			while (fast >= 0 && arr[fast] > swap)
+				arr[fast + 1] = arr[fast--];
+			arr[++fast] = swap;
+		}
 	}
 
 	@Test
