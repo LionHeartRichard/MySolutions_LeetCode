@@ -1,6 +1,7 @@
-package slidingwindow;
+package repeat;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
 /*
@@ -16,26 +17,20 @@ import org.junit.jupiter.api.Test;
 public class MinimumWindowSubstring {
 
 	public String minWindow(String s, String t) {
-		// обабатываем крайний случай
 		if (s.length() < t.length())
 			return "";
 
-		// алацируем ццлевой массив
 		char[] target = t.toCharArray();
-		// заполняем кэш 128! и инициализируем счетчик
 		int[] cache = new int[128];
 		int count = target.length;
 		for (char ch : target) {
 			++cache[ch];
 		}
 
-		// алацируем массив исходник
 		char[] source = s.toCharArray();
-		// быстрый и медленный указатель
 		int len = source.length, slowIdx = 0, fastIdx = 0;
 		int beginIdx = 0, window = len + 1;
 
-		// перебираем целевой массив сверяя и изменяя кэш и счетчик
 		while (slowIdx < len) {
 			int idx = source[slowIdx++];
 			if (cache[idx] > 0)
