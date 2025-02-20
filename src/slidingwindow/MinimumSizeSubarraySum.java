@@ -15,28 +15,26 @@ public class MinimumSizeSubarraySum {
 
 	public int minSubArrayLen(int target, int[] arr) {
 
-		int len = arr.length, fastIdx = 0, slowIdx = 0;
-		int sum = 0, ans = len + 1, window = 0;
+		int len = arr.length, left = 0;
+		int sum = 0, window = len + 1;
 
 		// складываем все элементы
 		// как только сумма превысила цель
 		// вычитаем элементы попутно расчитывая окно
-		while (slowIdx < len) {
-			sum += arr[slowIdx];
+		for (int right = 0; right < len; ++right) {
+			sum += arr[right];
 			while (sum >= target) {
-				window = slowIdx - fastIdx + 1;
-				ans = Math.min(ans, window);
-				sum -= arr[fastIdx++];
+				window = Math.min(window, right - left + 1);
+				sum -= arr[left++];
 			}
-			++slowIdx;
 		}
-		return ans == len + 1 ? 0 : ans;
+		return window == len + 1 ? 0 : window;
 	}
 
 	@Test
 	public void case1() {
 		int target = 7;
-		int[] nums = { 2, 3, 1, 2, 4, 3 };
+		int[] nums = {2, 3, 1, 2, 4, 3};
 
 		int expected = 2;
 		// [4,3] has the minimal length under the problem constraint.
@@ -48,7 +46,7 @@ public class MinimumSizeSubarraySum {
 	@Test
 	public void case2() {
 		int target = 4;
-		int[] nums = { 1, 4, 4 };
+		int[] nums = {1, 4, 4};
 
 		int expected = 1;
 		int actual = minSubArrayLen(target, nums);
@@ -59,7 +57,7 @@ public class MinimumSizeSubarraySum {
 	@Test
 	public void case3() {
 		int target = 11;
-		int[] nums = { 1, 1, 1, 1, 1, 1, 1, 1 };
+		int[] nums = {1, 1, 1, 1, 1, 1, 1, 1};
 
 		int expected = 0;
 		int actual = minSubArrayLen(target, nums);
@@ -70,7 +68,7 @@ public class MinimumSizeSubarraySum {
 	@Test
 	public void case4() {
 		int target = 11;
-		int[] nums = { 1, 2, 3, 4, 5 };
+		int[] nums = {1, 2, 3, 4, 5};
 
 		int expected = 3;
 		int actual = minSubArrayLen(target, nums);
@@ -81,7 +79,7 @@ public class MinimumSizeSubarraySum {
 	@Test
 	public void case5() {
 		int target = 15;
-		int[] nums = { 1, 2, 3, 4, 5 };
+		int[] nums = {1, 2, 3, 4, 5};
 
 		int expected = 5;
 		int actual = minSubArrayLen(target, nums);

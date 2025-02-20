@@ -10,6 +10,18 @@ import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 
+/*
+* Вам дана строка s и массив строк words. Все строки words имеют одинаковую длину.
+* 
+* Сцепленная строка — это строка, которая содержит в точности все строки любой перестановки сцепленных слов.
+* 
+* Например, если words = ["ab","cd","ef"], то "abcdef", "abefcd", "cdabef", "cdefab", "efabcd" и "efcdab" 
+* — это все сцепленные строки. 
+* "acdbef" не является сцепленной строкой, поскольку она не является конкатенацией какой-либо перестановки слов.
+* 
+* Верните массив начальных индексов всех сцепленных подстрок в s. Вы можете вернуть ответ в любом порядке.
+*/
+
 public class SubstringWithConcatenationOfAllWords {
 	public List<Integer> findSubstring(String s, String[] words) {
 		return new AbstractList<Integer>() {
