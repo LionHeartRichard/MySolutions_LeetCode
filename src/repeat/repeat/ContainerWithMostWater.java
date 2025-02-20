@@ -1,13 +1,16 @@
-package arrayandstring;
+package repeat.repeat;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
 /*
- * Вам дан целочисленный массив height длины n. Нарисовано n вертикальных линий, так что две конечные точки i-й линии — (i, 0) 
- * и (i, height[i]). Найдите две линии, которые вместе с осью x образуют контейнер, так что контейнер содержит больше всего воды.
- * Верните максимальное количество воды, которое может хранить контейнер. Обратите внимание, что вы не можете наклонить контейнер.
+ * Вам дан целочисленный массив height длины n. Нарисовано n вертикальных линий, 
+ * так что две конечные точки i-й линии — (i, 0) 
+ * и (i, height[i]). Найдите две линии, которые вместе с осью x образуют контейнер, 
+ * так что контейнер содержит больше всего воды.
+ * Верните максимальное количество воды, которое может хранить контейнер. 
+ * Обратите внимание, что вы не можете наклонить контейнер.
  */
 
 public class ContainerWithMostWater {
@@ -20,7 +23,7 @@ public class ContainerWithMostWater {
 		int ans = 0;
 		while (left < right) {
 			int height = Math.min(arr[left], arr[right]);
-			ans = Math.max(ans, height * (right - left));
+			ans = Math.max(ans, (right - left) * height);
 			// зачастую мы можем ускорить алгоритм применив к нему цикличное условие
 			// как в этой задаче
 			while (left < right && arr[left] <= height)

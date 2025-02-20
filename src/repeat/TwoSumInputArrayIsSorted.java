@@ -1,24 +1,12 @@
-package arrayandstring;
+package repeat;
 
 import static org.junit.Assert.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-/*
- * Дано 1-индексный массив целых чисел, который уже отсортирован в неубывающем порядке, 
- * найдите два числа, которые в сумме дают определенное целевое число. 
- * Пусть эти два числа будут numbers[index1] и numbers[index2], где 1 <= index1 < index2 <= numbers.length.
- * Верните индексы двух чисел, index1 и index2, сложенные на единицу, как целочисленный массив [index1, index2] длины 2.
- * Тесты генерируются таким образом, что существует ровно одно решение. Вы не можете использовать один и тот же элемент дважды.
- * Ваше решение должно использовать только постоянное дополнительное пространство.
- */
-
 public class TwoSumInputArrayIsSorted {
 	public int[] twoSum(int[] arr, int target) {
-
 		int left = 0, right = arr.length - 1;
-
 		while (left < right) {
 			int sum = arr[left] + arr[right];
 			if (sum > target) {
@@ -31,7 +19,6 @@ public class TwoSumInputArrayIsSorted {
 			}
 			return new int[] {left + 1, right + 1};
 		}
-
 		return new int[] {};
 	}
 

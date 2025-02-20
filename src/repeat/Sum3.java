@@ -1,4 +1,4 @@
-package arrayandstring;
+package repeat;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -18,10 +18,8 @@ import org.junit.jupiter.api.Test;
  */
 
 public class Sum3 {
-
 	public List<List<Integer>> threeSum(int[] arr) {
-		return new AbstractList<List<Integer>>() {
-
+		return new AbstractList<>() {
 			List<List<Integer>> ans;
 
 			@Override
@@ -41,20 +39,18 @@ public class Sum3 {
 	}
 
 	private List<List<Integer>> createList(int[] arr) {
-		int len = arr.length;
 		List<List<Integer>> ans = new ArrayList<>();
+		int len = arr.length;
 		Arrays.sort(arr);
-
-		for (int idx = 0; idx < len - 2 && arr[idx] <= 0; ++idx) {
-			if (idx != 0 && arr[idx] == arr[idx - 1])
+		for (int i = 0; i < len - 2 && arr[i] <= 0; ++i) {
+			if (i > 0 && arr[i] == arr[i - 1])
 				continue;
-			twoSum(ans, arr, idx + 1, len - 1, -arr[idx]);
+			twoSum(ans, arr, i + 1, len - 1, -arr[i]);
 		}
 		return ans;
 	}
 
 	private void twoSum(List<List<Integer>> ans, int[] arr, int left, int right, int target) {
-
 		while (left < right) {
 			if (arr[left] + arr[right] > target) {
 				--right;
@@ -121,4 +117,5 @@ public class Sum3 {
 			assertThat(currentExpected).containsExactlyInAnyOrderElementsOf(currentActual);
 		}
 	}
+
 }

@@ -1,4 +1,4 @@
-package arrayandstring;
+package repeat.repeat;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -6,52 +6,29 @@ import static org.junit.Assert.assertTrue;
 import org.junit.jupiter.api.Test;
 
 public class ValidPalindrome {
-
-	public boolean isPalindrome(String source) {
-		char[] arr = source.toCharArray();
+	public boolean isPalindrome(String s) {
+		char[] arr = s.toCharArray();
 		int left = 0, right = arr.length - 1;
+
 		while (left < right) {
-			if (!isCorrectSymbol(arr[left])) {
+			char chL = arr[left];
+			char chR = arr[right];
+			if (!((chL >= 'a' && chL <= 'z') || (chL >= 'A' && chL <= 'Z') || (chL >= '0' && chL <= '9'))) {
 				++left;
 				continue;
 			}
-			if (!isCorrectSymbol(arr[right])) {
+			if (!((chR >= 'a' && chR <= 'z') || (chR >= 'A' && chR <= 'Z') || (chR >= '0' && chR <= '9'))) {
 				--right;
 				continue;
 			}
-			char chL = arr[left++];
-			char chR = arr[right--];
 			chL = chL <= 'Z' ? (char) (chL + 32) : chL;
 			chR = chR <= 'Z' ? (char) (chR + 32) : chR;
 			if (chL != chR)
 				return false;
+			++left;
+			--right;
 		}
 		return true;
-	}
-
-	private boolean isUperCase(char ch) {
-		if ('A' <= ch && ch <= 'Z')
-			return true;
-		return false;
-	}
-
-	private boolean isLowerCase(char ch) {
-		if ('a' <= ch && ch <= 'z')
-			return true;
-		return false;
-	}
-
-	private boolean isDigits(char ch) {
-		if ('0' <= ch && ch <= '9')
-			return true;
-		return false;
-	}
-
-	private boolean isCorrectSymbol(char ch) {
-		if (isUperCase(ch) || isLowerCase(ch) || isDigits(ch)) {
-			return true;
-		}
-		return false;
 	}
 
 	@Test
@@ -88,4 +65,5 @@ public class ValidPalindrome {
 
 		assertFalse(isPalindrome(s));
 	}
+
 }
