@@ -8,5 +8,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="lib" path="/home/kerrigan_kein/java-lib-jar/assertj-core-3.27.2.jar"/>
+	<classpathentry kind="lib" path="/home/kerrigan_kein/eclipse/jee-2024-06/eclipse/lombok.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

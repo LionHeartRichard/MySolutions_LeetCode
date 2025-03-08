@@ -1,4 +1,4 @@
-package repeat;
+package repeat.repeat;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -14,18 +14,17 @@ import org.junit.jupiter.api.Test;
  */
 
 public class IsSubsequence {
-
 	public boolean isSubsequence(String s, String text) {
-		if (s.length() == 0)
+		// крайние случаи
+		if (s.equals(""))
 			return true;
-		if (text.length() == 0)
+		if (text.equals(""))
 			return false;
-		if (s.length() > text.length())
+		if (text.length() < s.length())
 			return false;
-		
-		char[] sub = s.toCharArray();
+		char[] arr = s.toCharArray();
 		int begin = 0, len = text.length();
-		for (char ch : sub) {
+		for (char ch : arr) {
 			int idx = text.indexOf(ch, begin, len);
 			if (idx == -1)
 				return false;

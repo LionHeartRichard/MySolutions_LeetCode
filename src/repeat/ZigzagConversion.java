@@ -1,4 +1,4 @@
-package arrayandstring;
+package repeat;
 
 import static org.junit.Assert.assertEquals;
 
@@ -18,10 +18,11 @@ Y I R
  */
 
 public class ZigzagConversion {
+
 	public String convert(String s, int numbersRows) {
 
 		// обработка крайних случаев
-		if (numbersRows == 1 || s.length() == 1)
+		if (numbersRows == 1 || numbersRows >= s.length())
 			return s;
 
 		StringBuilder[] arr = new StringBuilder[Math.min(numbersRows, s.length())];
@@ -29,10 +30,10 @@ public class ZigzagConversion {
 			arr[i] = new StringBuilder();
 
 		char[] source = s.toCharArray();
-		int idx = 0, n = arr.length - 1;
 
+		int idx = 0;
 		boolean goingDown = false;
-
+		int n = arr.length - 1;
 		for (char ch : source) {
 			arr[idx].append(ch);
 			goingDown = (idx == 0 || idx == n) ? !goingDown : goingDown;

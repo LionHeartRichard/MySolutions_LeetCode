@@ -1,4 +1,4 @@
-package repeat;
+package repeat.repeat;
 
 import static org.junit.Assert.assertTrue;
 
@@ -12,7 +12,6 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 public class HashTable_KeyValue_ValueKey {
-
 	/*
 	 * Алгоритм когда мы заполняем мапу ключь-значение а потом переворачиваем
 	 * значение-ключь
@@ -28,20 +27,17 @@ public class HashTable_KeyValue_ValueKey {
 		Map<Integer, Integer> map = new HashMap<>();
 		for (int key : arr)
 			map.put(key, map.getOrDefault(key, 0) + 1);
-
-		// 2) алацируем массив пустых списков
-		int len = arr.length;
-		List<Integer>[] cache = new List[len + 1];
-		for (int i = 1; i <= len; ++i)
+		// 2) алацируем массив списков
+		List<Integer>[] cache = new List[arr.length + 1];
+		for (int i = 1; i <= arr.length; ++i)
 			cache[i] = new ArrayList<>();
-
-		// 3) меняем местами ключ значение
-		for (int key : map.keySet())
+		// 3) меняем ключ-значение/значение-ключ
+		for (int key : map.keySet()) {
 			cache[map.get(key)].add(key);
-
+		}
 		// 4) формируем ответ
 		List<Integer> ans = new ArrayList<>();
-		for (int i = len; i > 0; --i) {
+		for (int i = arr.length; i >= 1; --i) {
 			List<Integer> tmp = cache[i];
 			for (int val : tmp) {
 				if (k-- == 0)
