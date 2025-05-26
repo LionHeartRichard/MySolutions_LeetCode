@@ -41,34 +41,35 @@ public class Sum3 {
 	}
 
 	private List<List<Integer>> createList(int[] arr) {
-		int len = arr.length;
 		List<List<Integer>> ans = new ArrayList<>();
-		Arrays.sort(arr);
+		int len = arr.length;
 
-		for (int idx = 0; idx < len - 2 && arr[idx] <= 0; ++idx) {
-			if (idx != 0 && arr[idx] == arr[idx - 1])
+		Arrays.sort(arr);
+		for (int i = 0; i < len - 2 && arr[i] <= 0; ++i) {
+			if (i != 0 && arr[i - 1] == arr[i])
 				continue;
-			twoSum(ans, arr, idx + 1, len - 1, -arr[idx]);
+			twoSum(ans, arr, i + 1, len - 1, -arr[i]);
 		}
 		return ans;
 	}
 
 	private void twoSum(List<List<Integer>> ans, int[] arr, int left, int right, int target) {
-
 		while (left < right) {
-			if (arr[left] + arr[right] > target) {
-				--right;
+			int sum = arr[left] + arr[right];
+			if (sum < target) {
+				++left;
 				continue;
 			}
-			if (arr[left] + arr[right] < target) {
-				++left;
+			if (sum > target) {
+				--right;
 				continue;
 			}
 
 			ans.add(Arrays.asList(-target, arr[left++], arr[right--]));
 
-			while (left <= right && arr[left] == arr[left - 1])
+			while (left <= right && arr[left - 1] == arr[left]) {
 				++left;
+			}
 		}
 	}
 
