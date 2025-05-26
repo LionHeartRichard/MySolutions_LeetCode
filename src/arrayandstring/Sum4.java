@@ -85,7 +85,6 @@ public class Sum4 {
 		int target = 0;
 		int[][] expected = {{-2, -1, 1, 2}, {-2, 0, 0, 2}, {-1, 0, 0, 1}};
 		List<List<Integer>> actualList = fourSum(nums, target);
-		int[][] actual = new int[3][4];
 
 	}
 
@@ -95,6 +94,6 @@ public class Sum4 {
 		int target = 8;
 		int[][] expected = {{2, 2, 2, 2}};
 		List<List<Integer>> actualList = fourSum(nums, target);
-		int[][] actual = new int[1][4];
+		
 	}
 }
