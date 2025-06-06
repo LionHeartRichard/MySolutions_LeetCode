@@ -67,11 +67,9 @@ public class Sum4 {
 					}
 					ans.add(Arrays.asList(arr[i], arr[j], arr[left++], arr[right--]));
 
-					while (left < right && arr[left] == arr[left - 1]) {
-						++left;
+					for (; left < right && arr[left] == arr[left - 1]; ++left) {
 					}
-					while (left < right && arr[right] == arr[right + 1]) {
-						--right;
+					for (; left < right && arr[right] == arr[right + 1]; --right) {
 					}
 				}
 			}
@@ -94,6 +92,6 @@ public class Sum4 {
 		int target = 8;
 		int[][] expected = {{2, 2, 2, 2}};
 		List<List<Integer>> actualList = fourSum(nums, target);
-		
+
 	}
 }
